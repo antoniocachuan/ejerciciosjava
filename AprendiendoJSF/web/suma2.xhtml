@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+<h:form id="form">
+    
+    <p:growl id="msgs" showDetail="true" />
+        <p:panelGrid columns="2">  
+                <f:facet name="header">  
+                        SUMA DE DOS NUMEROS 
+                </f:facet>  
+
+                <h:outputLabel for="num1" value="Número 1: " />  
+                <p:inputText id="num1" value="#{sumaBean.num1}" required="true" label="num1" />  
+
+                <h:outputLabel for="num2" value="Número 2:" />  
+                <p:inputText id="num2" value="#{sumaBean.num2}" required="true" label="num2"/>  
+
+                <h:outputLabel value="Respuesta:"/>
+                <h:outputText id="rpta" value="#{sumaBean.suma}"/>
+
+                <f:facet name="footer">  
+                        <p:commandButton value="Sumar" icon="ui-icon-check" 
+                                        style="margin:0" action="#{sumaBean.sumar()}"
+                                        ajax="true" update="@form"/>  
+                </f:facet>  
+        </p:panelGrid>  
+     <p:messages/>
+</h:form>
+    </h:body>
+</html>
+

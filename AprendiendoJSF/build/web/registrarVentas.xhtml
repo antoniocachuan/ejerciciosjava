@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="REGISTRO DE UNA VENTA" footer="Verifique los datos">
+                <p:panelGrid columns="2">  
+                    <h:outputLabel value="Cliente"/>  
+                    <p:inputText value="#{ventaBean.venta.cliente}"/>  
+                    <h:outputLabel value="Producto"/>  
+                    <p:inputText value="#{ventaBean.venta.producto}"/>
+                    <h:outputLabel value="Precio"/>  
+                    <p:inputText value="#{ventaBean.venta.precio}"/>
+                    <h:outputLabel value="Cantidad"/>  
+                    <p:inputText value="#{ventaBean.venta.cant}"/>
+
+                    <f:facet name="footer">  
+                        <p:commandButton value="Grabar" icon="ui-icon-check" 
+                                         action="#{ventaBean.grabar()}" ajax="false"/>  
+                    </f:facet>  
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

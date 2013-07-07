@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">  
+            <p:dataTable var="r" value="#{ventaBean.ventas}">  
+                <p:column headerText="Cliente">  
+                    <h:outputText value="#{r.cliente}" />  
+                </p:column>  
+
+                <p:column headerText="Producto">  
+                    <h:outputText value="#{r.producto}" />  
+                </p:column>  
+
+                <p:column headerText="Precio">  
+                    <h:outputText value="#{r.precio}" />  
+                </p:column>  
+
+                <p:column headerText="Cant">  
+                    <h:outputText value="#{r.cant}" />  
+                </p:column>  
+
+                <p:column headerText="Total">  
+                    <h:outputText value="#{r.total}" />  
+                </p:column>  
+
+                <p:column headerText="Acciones">  
+                    <p:commandButton id="deleteButton" update=":form:showVenta" oncomplete="ventaDialog.show()"
+                                     icon="ui-icon-close" title="Editar Venta">
+                        <f:setPropertyActionListener value="#{r}" target="#{ventaBean.editar}"/>
+                    </p:commandButton>
+                    <p:commandButton id="deleteButton" update=":form:showVenta" oncomplete="ventaDialog.show()"
+                                     icon="ui-icon-close" title="Eliminar Venta">
+                        <f:setPropertyActionListener value="#{r}" target="#{ventaBean.eliminar}"/>
+                    </p:commandButton>
+                </p:column> 
+
+            </p:dataTable>  
+
+            <p:commandLink action="registrarVenta" value="Registrar Venta"/>
+            <p:dialog header="#{ventaBean.titulo}" widgetVar="ventaDialog" resizable="false" id="carDlg"  
+                      showEffect="fade" hideEffect="explode" modal="true">
+                <h:panelGrid id="showVenta" columns="2" cellpadding="4" style="margin:0 auto;">  
+
+                    <h:outputText value="Cliente: " />  
+                    <h:outputText value="#{ventaBean.ventaActual.cliente}" style="font-weight:bold"/>  
+
+                    <h:outputText value="Producto: " />  
+                    <h:outputText value="#{ventaBean.ventaActual.producto}" style="font-weight:bold"/>  
+
+                    <h:outputText value="Precio: " />  
+                    <h:outputText value="#{ventaBean.ventaActual.precio}" style="font-weight:bold"/>  
+
+                    <h:outputText value="Cant: " />  
+                    <h:outputText value="#{ventaBean.ventaActual.cant}" style="font-weight:bold"/>  
+
+                </h:panelGrid>
+                
+                <p:commandButton value="Procesar" actionListener="#{ventaBean.procesar()}" update="@form"/>
+                
+            </p:dialog>  
+        </h:form>
+    </h:body>
+</html>
+
