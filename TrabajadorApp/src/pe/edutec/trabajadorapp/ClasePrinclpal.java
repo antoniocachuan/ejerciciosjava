@@ -4,6 +4,8 @@
  */
 package pe.edutec.trabajadorapp;
 
+import pe.edutec.trabajadorapp.layer.view.TrabajadorView;
+
 /**
  *
  * @author Alumno-CT
@@ -14,6 +16,7 @@ public class ClasePrinclpal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // TODO code application logic here}
+        TrabajadorView.main(null);
     }
 }
